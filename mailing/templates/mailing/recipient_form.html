@@ -1,0 +1,26 @@
+{% extends 'mailing/base.html' %}
+{% block title %}Форма клиенты{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+            <form class="row" method="post" enctype="multipart/form-data">
+                <div class="card">
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        {{ form.as_p}}
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                    {% if recipient %}
+                    Сохранить изменения
+                    {% else %}
+                    Создать
+                    {% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

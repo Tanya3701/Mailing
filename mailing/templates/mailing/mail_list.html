@@ -1,0 +1,30 @@
+{% extends 'mailing/base.html '%}
+{% block title %}Message_list{% endblock %}
+{% block content %}
+<main class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm" style="background-color: #6A5ACD;">
+    <img class="me-3" src="/media/mailing/images/mail.svg" alt="" width="48" height="38">
+    <div class="lh-1">
+      <h2 class="mb-0 text-white lh-1">Рассылка</h2>
+      <small>Настройка рассылки</small>
+    </div>
+  </div>
+
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <a href="{% url 'mailing:mail_create' %}" class="link-primary link-offset-2" >Добавить рассылку</a>
+    {% for mail in mails %}
+    <div class="d-flex text-body-secondary pt-4">
+      <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"  role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#D2691E"/><text x="50%" y="50%" fill="#D2691E" dy=".3em">32x32</text></svg>
+      <p class="pb-3 mb-0 small lh-sm border-bottom">
+        <strong class="d-block text-gray-dark"><u>Начало рассылки:</u> <b class="text-success">{{mail.start_time|date:"d.m.Y"}}</b></strong>
+        <strong class="d-block text-gray-dark"><u>Окончание рассылки:</u> <b class="text-success">{{mail.end_time|date:"d.m.Y"}}</b></strong>
+
+          <strong class="d-block text-gray-dark"> <u>Статус:</u> <b class="fs-5" style="color: #FF4500" >{{mail.status}}</b> </strong>
+          <strong><u>Заголовок рассылки:</u></strong> {{mail.message.theme| truncatechars:30}}
+         <strong><a href="{% url 'mailing:mail_detail' mail.pk %}" class="link-success">Открыть</a></strong>
+      </p>
+    </div>
+    {% endfor %}
+
+  </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+<nav class="navbar" style="background-color: #483D8B;">
+  <div class="container-fluid">
+      <a class="navbar-brand"><h3 class="text-white-50">Панель навигации</h3></a>
+      <button class="navbar-toggler" type="button" style="background-color: #6495ED;" data-bs-toggle="offcanvas" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Переключатель навигации">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+               <div class="container">
+      <header class="d-flex justify-content-center py-3">
+      <ul class="nav nav-pills">
+        <a class="btn btn-outline-light" href="{% url 'mailing:home' %}" role="button">Главная</a>
+          {% if user.is_authenticated %}
+        <a class="btn btn-outline-light" href="{% url 'mailing:recipient_list' %}" role="button">Клиенты</a>
+        <a class="btn btn-outline-light" href="{% url 'mailing:message_list' %}" role="button">Сообщения</a>
+        <a class="btn btn-outline-light" href="{% url 'mailing:mail_list' %}" role="button">Рассылки</a>
+          <a class="btn btn-outline-light" href="{% url 'users:user_list' %}" role="button">Пользователи</a>
+          <a class="btn btn-outline-light" href="{% url 'users:user_statistics' %}" role="button">Моя личная статистика</a>
+           <a class="btn btn-outline-light" href="{% url 'users:logout' %}" role="button">Выход</a>
+          {% else %}
+        <a class="btn btn-outline-light" href="{% url 'users:login' %}" role="button">Войти</a>
+        <a class="btn btn-outline-light" href="{% url 'users:register' %}" role="button">Регистрация</a>
+          {% endif %}
+      </ul>
+    </header>
+  </div>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav" >
+        <a class="nav-link-light active" aria-current="page" href="{% url 'mailing:home' %}" role="button">Главная</a>
+        <a class="nav-link" href="{% url 'mailing:recipient_list' %}" role="button">Клиенты</a>
+           {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'users:logout' %}" role="button">Выход</a>
+           {% else %}
+        <a class="nav-link disabled" href="{% url 'users:login' %}" role="button">Вход</a>
+        <a class="nav-link disabled" href="{% url 'users:register' %}" role="button">Регистрация</a>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>

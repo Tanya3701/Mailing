@@ -1,0 +1,47 @@
+[
+{
+    "model": "mailing.recipient",
+    "pk": 1,
+    "fields": {
+        "name": "Мария",
+        "email": "rec1@sky.pro",
+        "comment": "Комментарий получателя Мария"
+    }
+},
+{
+    "model": "mailing.recipient",
+    "pk": 2,
+    "fields": {
+        "name": "Алексей",
+        "email": "rec2@sky.pro",
+        "comment": "Комментарий получателя Алексея"
+    }
+},
+{
+    "model": "mailing.recipient",
+    "pk": 3,
+    "fields": {
+        "name": "Иван",
+        "email": "rec3@sky.pro",
+        "comment": "Комментарий получателя Иван"
+    }
+},
+{
+    "model": "mailing.recipient",
+    "pk": 4,
+    "fields": {
+        "name": "Анна",
+        "email": "rec4@sky.pro",
+        "comment": "Комментарий получателя Анна"
+    }
+},
+{
+    "model": "mailing.recipient",
+    "pk": 5,
+    "fields": {
+        "name": "Ольга",
+        "email": "rec5@sky.pro",
+        "comment": "Комментарий получателя Ольги"
+    }
+}
+]

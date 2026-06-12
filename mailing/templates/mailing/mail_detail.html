@@ -1,0 +1,51 @@
+{% extends 'mailing/base.html '%}
+{% block title %}Сообщение{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm" style="background-color: #6A5ACD;">
+    <img class="me-3" src="/media/mailing/images/mail.svg" alt="" width="48" height="38">
+    <div class="lh-1">
+      <h2 class="mb-0 text-white lh-1">Рассылки</h2>
+      <small>Рассылка №-{{mail.id}}</small>
+    </div>
+  </div>
+
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
+
+    <div class="d-flex text-body-secondary pt-3">
+      <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"  role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#D2691E"/><text x="50%" y="50%" fill="#D2691E" dy=".3em">32x32</text></svg>
+      <div class="pb-3 mb-0 small lh-sm border-bottom">
+        <p>  <strong class="d-block text-gray-dark"><u>Начало рассылки:</u> <b class="text-success">{{mail.start_time|date:"d.m.Y"}}</b></strong></p>
+        <p><strong class="d-block text-gray-dark"><u>Окончание рассылки:</u> <b class="text-success">{{mail.end_time|date:"d.m.Y"}}</b></strong></p>
+        <p><strong class="d-block text-gray-dark"> <u>Статус:</u> <b class="fs-5" style="color: #FF4500" >{{mail.status}}</b> </strong></p>
+        <p><strong><u>Автор:</u></strong>"{{mail.owner}}"</p>
+        <p><strong><u>Заголовок рассылки:</u></strong>"{{mail.message.theme}}"</p>
+          <p><a class=class="stretched-link data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Развернуть полное содержание
+              <img class="me-3" src="/media/mailing/images/caret-down.svg" alt="" width="15" height="15">
+          </a></p>
+              <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                  {{mail.message.body}}
+              </div>
+              </div>
+      </div>
+    </div>
+    <small class="d-block text-end mt-3">
+        {% if user == mail.owner %}
+        <a href="{% url 'mailing:mail_delete' mail.id %}" class="link-danger">Удалить</a>
+        {% endif %}
+        {% if perms.mail.disabling_mailing or user == mail.owner %}
+        <a href="{% url 'mailing:mail_update' mail.id %}" class="link-success">Редактировать</a>
+          {% endif %}
+        <a href="{% url 'mailing:mail_list' %}">К списку рассылок</a>
+    </small>
+    <h4>Получатели:</h4>
+          {% for recipient in mail_recipients %}
+    <p class="lh-1"><u>Имя:</u> <b style="color: #191970">{{recipient.name}}</b></p>
+    <p class="lh-1"><u>Email:</u> <b style="color: #191970">{{recipient.email}}</b></p>
+     <hr>
+          {% endfor %}
+</div>
+{% endblock %}

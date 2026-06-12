@@ -1,0 +1,33 @@
+{% extends 'mailing/base.html' %}
+{% block title %}Личная статистика пользователя{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Личная статистика пользователя</h1>
+    <hr class="border  border-2 opacity-50 ">
+    <h4 class="text-center">Общее количество рассылок - {{mails}}</h4>
+        <div class="w-25 p-3"></div>
+<p class="fs-4"><img src="/media/mailing/images/status.png" alt="" height="30" >
+     "Созданные" - {{mail_create}}
+</p>
+<p class="fs-4"><img src="/media/mailing/images/status_work.png" alt="" height="30" >
+    "Активные" - {{mail_run}}
+</p>
+<p class="fs-4"><img src="/media/mailing/images/status_end.png" alt="" height="30" >
+    "Завершенные" - {{mail_complete}}
+</p>
+    <hr class="border  border-2 opacity-50 ">
+    <h4 class="text-center">Попытки рассылок____ВСЕГО - {{total_attempt}}</h4>
+ <p class="fs-4"><img src="/media/mailing/images/success.png" alt="" height="30" >
+    Успешные - {{attempt_ok}}
+</p>
+    <p class="fs-4"><img src="/media/mailing/images/crash.png" alt="" height="30" >
+    Неудачные - {{attempt_fail}}
+</p>
+    <hr class="border  border-2 opacity-50 ">
+    <h4 class="text-center">Получатели</h4>
+    <p class="fs-4"><img class="me-3" src="/media/mailing/images/people.svg" alt="" width="48" height="38">
+    Количество получателей - {{recipients}}
+    </p>
+</div>
+
+{% endblock %}

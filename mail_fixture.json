@@ -1,0 +1,42 @@
+[
+{
+    "model": "mailing.mail",
+    "pk": 1,
+    "fields": {
+        "start_time": "2026-04-20T11:39:21Z",
+        "end_time": "2026-05-20T11:40:21Z",
+        "status": "created",
+        "message": 1,
+        "recipients": [
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "mailing.mail",
+    "pk": 2,
+    "fields": {
+        "start_time": "2026-05-20T11:39:21Z",
+        "end_time": "2026-06-20T11:40:21Z",
+        "status": "created",
+        "message": 6,
+        "recipients": [
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "mailing.mail",
+    "pk": 3,
+    "fields": {
+        "start_time": "2026-07-20T11:39:21Z",
+        "end_time": "2026-08-20T11:40:21Z",
+        "status": "created",
+        "message": 4,
+        "recipients": [
+        ]
+    }
+}
+]
