@@ -15,7 +15,7 @@ class MailForm(ModelForm):
         end_time = cleaned_data.get("end_time")
         if start_time > end_time:
             raise ValidationError("Начало рассылки не может быть позже ее окончания")
-        elif start_time < start_time:
+        elif end_time < start_time:
             raise ValidationError("Начало рассылки не может быть раньше ее начала")
 
     def __init__(self, *args, **kwargs):

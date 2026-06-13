@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 from django.db import models
 from django.utils import timezone
@@ -11,6 +11,8 @@ STATUS_CHOICES = [
     ("Запущена", "Запущена"),
 ]
 STATUS_ATTEMPT = [("Успешно", "Успешно"), ("Не успешно", "Не успешно")]
+START = datetime.today()
+END = START + timedelta(days=30)
 
 
 class Recipient(models.Model):
@@ -48,13 +50,13 @@ class Mail(models.Model):
     start_time = models.DateTimeField(
         blank=False,
         null=False,
-        default=timezone.now(),
+        default=START,
         help_text="Введите дату предполагаемой рассылки",
     )
     end_time = models.DateTimeField(
         blank=False,
         null=False,
-        default=timezone.now() + timedelta(hours=720),
+        default=END,
         help_text="Введите дату окончания рассылки",
     )
     status = models.CharField(choices=STATUS_CHOICES, max_length=100, default="Создана")

@@ -129,7 +129,7 @@ class MailListView(LoginRequiredMixin, ListView):
     context_object_name = "mails"
 
     def get_queryset(self):
-        if self.request.user.has_perm("mailing.can_view_mail_list"):
+        if self.request.user.has_perm("mailing.can_view_mailing_list"):
             return Mail.objects.all()
         return Mail.objects.filter(owner=self.request.user)
 
@@ -159,7 +159,7 @@ class MailUpdateView(LoginRequiredMixin, UpdateView):
         user = self.request.user
         if user == self.object.owner:
             return MailForm
-        if user.has_perm("mailing.can_disabling_mailing"):
+        if user.has_perm("mailing.can_disabling_mailings"):
             return MailManagerForm
         raise PermissionDenied
 
